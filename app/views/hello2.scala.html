@@ -1,0 +1,9 @@
+@import entities._ 
+@(list: List[Image])
+
+<ul>
+	@for(index <- 0 until list.size) {
+	<li><img src=@list.get(index).getDownload_url() width="200"
+		height="100"></img></li> }
+
+</ul>
