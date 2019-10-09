@@ -21,16 +21,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
+import java.util.logging.Logger;
 
 /**
  * This controller contains an action to handle HTTP requests to the
  * application's home page.
  */
 public class HomeController extends Controller {
+	private Logger logger = Logger.getLogger("play");
 
 	private final Config config;
 	private final SyncCacheApi cache;
 	private final WSClient wsClient;
+	private boolean test = true;
 	@javax.inject.Inject
 	private ContentAPIService ContentAPIService;
 
@@ -63,7 +66,7 @@ public class HomeController extends Controller {
 
 	}
 
-	public Result test() {
+	public CompletionStage<Result> test() {
 
 		int idImg = ContentAPIService.randonId();
 		String url = "";
@@ -71,53 +74,39 @@ public class HomeController extends Controller {
 		// test if the cache isempty
 		if (cache.get("firstimgUrl1") == null) {
 			// add the URL of a random image to the cache
+			logger.info("cache isEmpty");
 			this.cache.set("firstimgUrl1", idImg, this.config.getInt("randomImg.cache"));
 		} else {
+			logger.info("cache isNotEmpty");
 			// get the id of the image from tha cache
 			idImg = (cache.get("firstimgUrl1"));
 		}
 		// compose the url of the new image with the id from the cache
 		url = config.getString("firstimgUrl1") + idImg + "/300/300";
+		final String finalUrl = url;
 
 		// render the hello View with random id from cache
-		return ok(views.html.hello.render(url));
-	}
-
-	public Result testMultiple() throws IOException {
-		try {
-			mapjson();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		// render the hello2 View with the list of img withid mult 2
-		return ok(views.html.hello2.render(mapjson()));
+		return wsClient.url(url).get().thenApply(body -> ok(views.html.hello.render(finalUrl)));
 
 	}
 
-	
-	//map the json to a list of Img
-	public List<Image> mapjson() throws IOException {
-		String sURL = config.getString("randomImgMult.url");
+	public CompletionStage<Result> testMultiple() throws IOException {
+		final List<Image> listOfImg = ContentAPIService.mapjson(config.getString("randomImgMult.url"));
 
-		// Connect to the URL using java's native library
-		URL url = new URL(sURL);
-		URLConnection request = url.openConnection();
-		request.connect();
+		return wsClient.url(config.getString("randomImgMult.url")).get()
+				.thenApply(body -> ok(views.html.hello2.render(listOfImg)));
 
-		InputStream in = ((InputStream) request.getContent());
-		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-		StringBuilder result = new StringBuilder();
-		String line;
-		while ((line = reader.readLine()) != null) {
-			result.append(line);
+	}
+
+	public CompletionStage<Result> changeTest() throws IOException {
+
+		if (test == true) {
+			test = false;
+			return test();
+		} else {
+			test = true;
+			return testMultiple();
 		}
-
-		ObjectMapper mapper = new ObjectMapper();
-		List<Image> allImg = Arrays.asList(mapper.readValue(result.toString(), Image[].class));
-		List<Image> mult2 = new ArrayList<>();
-		// get the list of the image where id is mult 2
-		mult2 = ContentAPIService.listMult2(allImg);
-		return mult2;
 
 	}
 

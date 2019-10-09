@@ -32,9 +32,12 @@ object hello extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.Html
 
 Seq[Any](format.raw/*1.16*/("""
 
+"""),format.raw/*3.1*/("""<ul>
+	<li><input type="submit"
+		onclick="location.href='/changeTest';" value="View a list of image" /></li>
 
-
-"""),format.raw/*5.1*/("""<img src="""),_display_(/*5.11*/url),format.raw/*5.14*/("""/>"""))
+	<li><img src="""),_display_(/*7.16*/url),format.raw/*7.19*/(""" """),format.raw/*7.20*/("""/></li>
+</ul>"""))
       }
     }
   }
@@ -50,11 +53,11 @@ Seq[Any](format.raw/*1.16*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Tue Oct 08 11:30:35 GMT+01:00 2019
+                  DATE: Wed Oct 09 16:09:23 GMT+01:00 2019
                   SOURCE: C:/Users/asus/Desktop/React/dlp-test/app/views/hello.scala.html
-                  HASH: 3301dbbfda9a1048e2a380fd767cf7561cbf4f99
-                  MATRIX: 948->1|1057->15|1091->23|1127->33|1150->36
-                  LINES: 28->1|33->1|37->5|37->5|37->5
+                  HASH: 7bf26d5b2b17c121c0bd4c440dd64ac5ddacc005
+                  MATRIX: 948->1|1057->15|1087->19|1242->148|1265->151|1293->152
+                  LINES: 28->1|33->1|35->3|39->7|39->7|39->7
                   -- GENERATED --
               */
           

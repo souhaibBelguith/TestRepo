@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/asus/Desktop/React/dlp-test/conf/routes
-// @DATE:Tue Oct 08 18:48:42 GMT+01:00 2019
+// @DATE:Wed Oct 09 15:59:07 GMT+01:00 2019
 
 
 package router {

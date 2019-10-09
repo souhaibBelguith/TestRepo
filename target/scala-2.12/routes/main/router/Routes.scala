@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/asus/Desktop/React/dlp-test/conf/routes
-// @DATE:Tue Oct 08 18:48:42 GMT+01:00 2019
+// @DATE:Wed Oct 09 15:59:07 GMT+01:00 2019
 
 package router
 
@@ -43,6 +43,7 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """test""", """controllers.HomeController.test"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """testMultiple""", """controllers.HomeController.testMultiple"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """changeTest""", """controllers.HomeController.changeTest"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -122,6 +123,24 @@ class Routes(
     )
   )
 
+  // @LINE:15
+  private[this] lazy val controllers_HomeController_changeTest4_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("changeTest")))
+  )
+  private[this] lazy val controllers_HomeController_changeTest4_invoker = createInvoker(
+    HomeController_0.changeTest,
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "changeTest",
+      Nil,
+      "GET",
+      this.prefix + """changeTest""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -147,6 +166,12 @@ class Routes(
     case controllers_HomeController_testMultiple3_route(params@_) =>
       call { 
         controllers_HomeController_testMultiple3_invoker.call(HomeController_0.testMultiple)
+      }
+  
+    // @LINE:15
+    case controllers_HomeController_changeTest4_route(params@_) =>
+      call { 
+        controllers_HomeController_changeTest4_invoker.call(HomeController_0.changeTest)
       }
   }
 }

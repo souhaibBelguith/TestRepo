@@ -33,12 +33,14 @@ object hello2 extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.Htm
 
 Seq[Any](format.raw/*2.21*/("""
 
-"""),format.raw/*4.1*/("""<ul>
-	"""),_display_(/*5.3*/for(index <- 0 until list.size) yield /*5.34*/ {_display_(Seq[Any](format.raw/*5.36*/("""
-	"""),format.raw/*6.2*/("""<li><img src="""),_display_(/*6.16*/list/*6.20*/.get(index).getDownload_url()),format.raw/*6.49*/(""" """),format.raw/*6.50*/("""width="200"
-		height="100"></img></li> """)))}),format.raw/*7.29*/("""
 
-"""),format.raw/*9.1*/("""</ul>"""))
+"""),format.raw/*5.1*/("""<ul>
+<li><input type="submit" onclick="location.href='/changeTest';" value="View one image" /></li>
+	"""),_display_(/*7.3*/for(index <- 0 until list.size) yield /*7.34*/ {_display_(Seq[Any](format.raw/*7.36*/("""
+	"""),format.raw/*8.2*/("""<li><img src="""),_display_(/*8.16*/list/*8.20*/.get(index).getDownload_url()),format.raw/*8.49*/(""" """),format.raw/*8.50*/("""width="200"
+		height="100"></img></li> """)))}),format.raw/*9.29*/("""
+
+"""),format.raw/*11.1*/("""</ul>"""))
       }
     }
   }
@@ -54,11 +56,11 @@ Seq[Any](format.raw/*2.21*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Tue Oct 08 18:33:09 GMT+01:00 2019
+                  DATE: Wed Oct 09 16:08:48 GMT+01:00 2019
                   SOURCE: C:/Users/asus/Desktop/React/dlp-test/app/views/hello2.scala.html
-                  HASH: 8bc49944efaf97d6f8507124e47d15aa3e370763
-                  MATRIX: 651->1|979->22|1093->41|1123->45|1156->53|1202->84|1241->86|1270->89|1310->103|1322->107|1371->136|1399->137|1470->178|1500->182
-                  LINES: 24->1|29->2|34->2|36->4|37->5|37->5|37->5|38->6|38->6|38->6|38->6|38->6|39->7|41->9
+                  HASH: da802b2a08d8ac65aa5b4f7484be5004a63726e3
+                  MATRIX: 651->1|979->22|1093->41|1125->47|1254->151|1300->182|1339->184|1368->187|1408->201|1420->205|1469->234|1497->235|1568->276|1599->280
+                  LINES: 24->1|29->2|34->2|37->5|39->7|39->7|39->7|40->8|40->8|40->8|40->8|40->8|41->9|43->11
                   -- GENERATED --
               */
           

@@ -1,14 +1,27 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Image {
 	
+	@JsonProperty("id")
 	private int id;
+	
+	@JsonProperty("author")
 	private String author;
+	
+	@JsonProperty("width")
 	private String width;
+	
+	@JsonProperty("height")
 	private String height;
+	
+	@JsonProperty("url")
 	private String url;
+	
+	@JsonProperty("download_url")
 	private String download_url;
+	
 	public int getId() {
 		return id;
 	}
