@@ -23,7 +23,7 @@ import play.data._
 import play.core.j.PlayFormsMagicForJava._
 /*1.2*/import entities._
 
-object hello2 extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[List[Image],play.twirl.api.HtmlFormat.Appendable] {
+object images extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[List[Image],play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
   def apply/*2.2*/(list: List[Image]):play.twirl.api.HtmlFormat.Appendable = {
@@ -56,8 +56,8 @@ Seq[Any](format.raw/*2.21*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Wed Oct 09 16:08:48 GMT+01:00 2019
-                  SOURCE: C:/Users/asus/Desktop/React/dlp-test/app/views/hello2.scala.html
+                  DATE: Thu Oct 10 13:58:20 GMT+01:00 2019
+                  SOURCE: C:/Users/asus/Desktop/React/dlp-test/app/views/images.scala.html
                   HASH: da802b2a08d8ac65aa5b4f7484be5004a63726e3
                   MATRIX: 651->1|979->22|1093->41|1125->47|1254->151|1300->182|1339->184|1368->187|1408->201|1420->205|1469->234|1497->235|1568->276|1599->280
                   LINES: 24->1|29->2|34->2|37->5|39->7|39->7|39->7|40->8|40->8|40->8|40->8|40->8|41->9|43->11

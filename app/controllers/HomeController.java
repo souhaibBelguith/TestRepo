@@ -86,7 +86,7 @@ public class HomeController extends Controller {
 		final String finalUrl = url;
 
 		// render the hello View with random id from cache
-		return wsClient.url(url).get().thenApply(body -> ok(views.html.hello.render(finalUrl)));
+		return wsClient.url(url).get().thenApply(body -> ok(views.html.image.render(finalUrl)));
 
 	}
 
@@ -94,7 +94,7 @@ public class HomeController extends Controller {
 		final List<Image> listOfImg = ContentAPIService.mapjson(config.getString("randomImgMult.url"));
 
 		return wsClient.url(config.getString("randomImgMult.url")).get()
-				.thenApply(body -> ok(views.html.hello2.render(listOfImg)));
+				.thenApply(body -> ok(views.html.images.render(listOfImg)));
 
 	}
 
